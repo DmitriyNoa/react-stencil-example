@@ -51,7 +51,8 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
-    "@stencil/webpack": "0.0.6"
+    "@stencil/webpack": "0.0.6",
+    "copy-webpack-plugin": "^4.5.1"
   },
   "jest": {
     "collectCoverageFrom": [

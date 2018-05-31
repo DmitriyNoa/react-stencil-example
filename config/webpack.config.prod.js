@@ -10,6 +10,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const stencil = require('@stencil/webpack');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
@@ -242,6 +243,7 @@ module.exports = {
     // in `package.json`, in which case it will be the pathname of that URL.
     new InterpolateHtmlPlugin(env.raw),
     // Generates an `index.html` file with the <script> injected.
+    new CopyWebpackPlugin([{ from: './node_modules/z-product-card/dist', to: './z-product-card' }]),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
