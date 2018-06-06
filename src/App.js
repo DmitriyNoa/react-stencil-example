@@ -7,14 +7,9 @@ import {products} from './mocks/products';
 class App extends Component {
   products = products;
 
-  changeTest() {
-    this.product.name = "sdfsdfsdfsf";
-    console.log(this.product);
-  }
-
   constructor(props) {
     super(props);
-    this.changeTest = this.changeTest.bind(this);
+    this.onProductLiked = this.onProductLiked.bind(this);
     this.state = {
       likedProducts: []
     }
@@ -27,13 +22,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this).addEventListener("productLiked", (e) => {
-      const liked = this.state.likedProducts;
-      const currentProduct = JSON.parse(e.detail);
-      liked.push(currentProduct);
-      this.setState({
-        likedProducts: liked
-      });
+    ReactDOM.findDOMNode(this).addEventListener("productLiked", this.onProductLiked)
+  }
+
+  componentWillUnmount() {
+    ReactDOM.findDOMNode(this).removeEventListener('productLiked', this.onProductLiked);
+  }
+
+  onProductLiked(event) {
+    const liked = this.state.likedProducts;
+    const currentProduct = JSON.parse(event.detail);
+    liked.push(currentProduct);
+    this.setState({
+      likedProducts: liked
     });
   }
 
