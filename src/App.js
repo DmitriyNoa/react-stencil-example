@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
-import logo from './logo.svg';
 import './App.css';
 import {products} from './mocks/products';
 
@@ -12,12 +11,6 @@ class App extends Component {
     this.onProductLiked = this.onProductLiked.bind(this);
     this.state = {
       likedProducts: []
-    }
-  }
-
-  processProductData(data) {
-    if (data) {
-      return JSON.stringify(data);
     }
   }
 
@@ -42,7 +35,7 @@ class App extends Component {
     const productsHtml = this.products.map((product, i) => {
       return (
         <div className="product-grid-item" key={i}>
-          <z-product-card product={this.processProductData(product)}></z-product-card>
+          <z-product-card  ref={el => el.product = product}></z-product-card>
         </div>
       );
     });
