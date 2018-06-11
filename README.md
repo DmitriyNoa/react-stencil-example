@@ -25,3 +25,6 @@ $ cd react-stencil-example
 $ npm i
 $ npm start
 ```
+
+# Community discussions:
+You can check React community discussions around web components integration here https://github.com/facebook/react/issues/11347

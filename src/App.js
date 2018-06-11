@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import './App.css';
 import {products} from './mocks/products';
 
+
+
 class App extends Component {
   products = products;
 
@@ -10,7 +12,8 @@ class App extends Component {
     super(props);
     this.onProductLiked = this.onProductLiked.bind(this);
     this.state = {
-      likedProducts: []
+      likedProducts: [],
+      products: products
     }
   }
 
@@ -24,18 +27,20 @@ class App extends Component {
 
   onProductLiked(event) {
     const liked = this.state.likedProducts;
-    const currentProduct = JSON.parse(event.detail);
-    liked.push(currentProduct);
+    console.log(event.detail);
+    liked.push(event.detail);
     this.setState({
       likedProducts: liked
     });
+
   }
 
   render() {
-    const productsHtml = this.products.map((product, i) => {
+
+    const productsHtml = this.state.products.map((data, i) => {
       return (
         <div className="product-grid-item" key={i}>
-          <z-product-card  ref={el => el.product = product}></z-product-card>
+          <z-product-card  ref={(el) => { if(el) {  el.product=data; } }}></z-product-card>
         </div>
       );
     });
