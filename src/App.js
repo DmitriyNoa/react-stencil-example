@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <div className="demo-container">
         <div className="col-left">
-          <h2>Custom web component test</h2>
+          <h2>React custom web component test</h2>
             {productsHtml}
         </div>
         <div className="col-right">
