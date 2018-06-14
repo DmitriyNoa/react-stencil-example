@@ -11,7 +11,6 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const stencil = require('@stencil/webpack');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
@@ -296,10 +295,6 @@ module.exports = {
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
     }),
-    new stencil.StencilPlugin({
-      collections: [
-        'node-modules/z-product-card/dist/collection'
-      ]}),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
     new SWPrecacheWebpackPlugin({

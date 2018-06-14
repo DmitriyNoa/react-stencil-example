@@ -11,7 +11,6 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const getClientEnvironment = require('./env');
-const stencil = require('@stencil/webpack');
 const paths = require('./paths');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -245,11 +244,10 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new CopyWebpackPlugin([{ from: './node_modules/z-product-card/dist', to: './z-product-card' }]),
-    new stencil.StencilPlugin({
-      collections: [
-        'node-modules/z-product-card/dist/collection'
-      ]})
+    new CopyWebpackPlugin([{
+      from: './node_modules/z-product-card/dist', to: './z-product-card' },
+      { from: './node_modules/z-product-card/dist/collection/assets', to: './assets' }
+    ])
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

@@ -36,11 +36,10 @@ class App extends Component {
   }
 
   render() {
-
     const productsHtml = this.state.products.map((data, i) => {
       return (
         <div className="product-grid-item" key={i}>
-          <z-product-card  ref={(el) => { if(el) {  el.product=data; } }}></z-product-card>
+          <z-product-card  ref={(el) => { if (el) {  el.product=data; } }}></z-product-card>
         </div>
       );
     });
